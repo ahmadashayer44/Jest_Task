@@ -91,4 +91,16 @@ describe("Calculator", () => {
   it("should throw error when there are missing items", () => {
     expect(() => calc(2, "-")).toThrow("Missing items");
   });
+  it("if number > 1000 it should be ignored", () => {
+    expect(calc(1001, "+", 3)).toBe(3);
+  });
+  it("if number > 1000 it should be ignored", () => {
+    expect(calc(3, "+", 1001)).toBe(3);
+  });
+  it("if number > 1000 it should be ignored", () => {
+    expect(calc(1001, "*", 3)).toBe(3);
+  });
+  it("if number > 1000 it should be ignored", () => {
+    expect(calc(3, "*", 1001)).toBe(3);
+  });
 });
