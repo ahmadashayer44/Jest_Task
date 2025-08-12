@@ -42,7 +42,9 @@ function calc(...args) {
           if (i + 1 == arr.length) {
             throw new Error("Missing items");
           }
-          number = arr[i - 1] * arr[i + 1];
+          number =
+            (arr[i - 1] > 1000 ? 1 : arr[i - 1]) *
+            (arr[i + 1] > 1000 ? 1 : arr[i + 1]);
           arr[i - 1] = number;
           arr.splice(i, 2);
           i--;
@@ -61,7 +63,9 @@ function calc(...args) {
           if (i + 1 == arr.length) {
             throw new Error("Missing items");
           }
-          number = arr[i - 1] + arr[i + 1];
+          number =
+            (arr[i - 1] > 1000 ? 0 : arr[i - 1]) +
+            (arr[i + 1] > 1000 ? 0 : arr[i + 1]);
           arr[i - 1] = number;
           arr.splice(i, 2);
           i--;
@@ -79,5 +83,4 @@ function calc(...args) {
     }
   }
 }
-
 module.exports = calc;
