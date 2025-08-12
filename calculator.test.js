@@ -51,4 +51,44 @@ describe("Calculator", () => {
   it("should throw an error for invalid input types", () => {
     expect(() => calc("2", "+", 3)).toThrow("Invalid input type");
   });
+  it("should calculate 2 + 3 * 4 = 14 (operator precedence)", () => {
+    expect(calc(2, "+", 3, "*", 4)).toBe(14);
+  });
+
+  it("should calculate 10 / 2 - 3 = 2", () => {
+    expect(calc(10, "/", 2, "-", 3)).toBe(2);
+  });
+
+  it("should calculate 2 * 3 * 4 = 24", () => {
+    expect(calc(2, "*", 3, "*", 4)).toBe(24);
+  });
+
+  it("should return 5 when single number input", () => {
+    expect(calc(5)).toBe(5);
+  });
+
+  it("should throw 'Division by zero' when dividing by zero", () => {
+    expect(() => calc(6, "/", 0)).toThrow("Division by zero");
+  });
+
+  it("should throw 'Missing items' when operator is last", () => {
+    expect(() => calc(2, "+")).toThrow("Missing items");
+  });
+
+  it("should throw error when no input is provided", () => {
+    expect(() => calc()).toThrow();
+  });
+
+  it("should throw 'Invalid input type' for invalid operand type", () => {
+    expect(() => calc("2", "+", 3)).toThrow("Invalid input type");
+  });
+  it("should throw error when there are missing items", () => {
+    expect(() => calc(2, "*")).toThrow("Missing items");
+  });
+  it("should throw error when there are missing items", () => {
+    expect(() => calc(2, "/")).toThrow("Missing items");
+  });
+  it("should throw error when there are missing items", () => {
+    expect(() => calc(2, "-")).toThrow("Missing items");
+  });
 });
